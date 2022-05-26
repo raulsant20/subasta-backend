@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+require('colors');
+const express = require('express');
+const cors = require('cors')
+const clientRouter = require('./users/user.routes')
+const sellerRouter = require('./seller/seller.routes')
+const subastaRouter = require('./subasta/subata.routes')
+const app = express();
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+app.use(cors())
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+app.use('/api/user', clientRouter)
+app.use('/api/seller', sellerRouter)
+app.use('/api/subasta', subastaRouter)
 
-export default App;
+module.exports = app;
