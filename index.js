@@ -31,12 +31,17 @@ const getUser = (userId) => {
 
 
 io.on("connection", (socket)=>{
-  socket.on("newSubasta", (idsubasta)=>{
-    socket.join(idsubasta)
+  console.log('conectando')
+  socket.on("newSubasta", (id)=>{
+    console.log('newSubsta', id)
+    socket.join(id)
   })
 
   socket.on("addSubasta", ({idsubasta, name})=>{
-    io.to(idsubasta).emit("add", name)
+
+    console.log('aumentando')
+    console.log(socket.rooms)
+    socket.to(idsubasta).emit("add", name)
   })
 
   socket.on("salir",()=>{
@@ -44,6 +49,7 @@ io.on("connection", (socket)=>{
   })
 
   socket.on("disconnect",()=>{
+    console.log('desconectando')
     console.log(socket.rooms)
   })
 })

@@ -1,6 +1,7 @@
 const {getSubasta} = require('../services')
 
 const get = async (req, res) => {
+  console.log(req.params)
   try {
 		const {id} = req.params
 		const subasta = await getSubasta(id)
