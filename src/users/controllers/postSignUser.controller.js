@@ -6,6 +6,7 @@ const postSignUser = async (req,res)=>{
 		const data = await loginUser(body)
 		return res.status(200).json(data);
 	} catch (error) {
+		console.log('postSignUser.controller: ', error.name);
     return res.status(400).send( {error: error.message} );
 	}
 }
