@@ -1,6 +1,6 @@
 const { updateSubasta } = require('../services');
 
-const ganadorSubasta = async () =>{
+const ganadorSubasta = async (req, res) =>{
 	try {
     const { body } = req;
     await updateSubasta({ ...body },req.id);
