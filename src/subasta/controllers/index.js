@@ -3,6 +3,7 @@ const get = require('./getSubasta.controller')
 const ganadorSubasta = require('./ganadorSubasta.controller')
 const getAll = require('./getAll.controller')
 const sellerGet = require('./sellerGet.controller')
+const winGet = require('./winGet.controller')
 
 module.exports = {
   postCreateSubasta,
@@ -10,4 +11,5 @@ module.exports = {
 	ganadorSubasta,
 	getAll,
 	sellerGet,
+	winGet,
 };
